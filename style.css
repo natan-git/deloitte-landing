@@ -225,12 +225,10 @@ ul {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.box-2 {
-  display: flex;
-  justify-content: flex-end;
-}
+
 .box-2 img {
-  width: 80%;
+  max-width: 80%;
+  float: right;
 }
 .btn {
   background-color: #6de11a;
@@ -256,6 +254,10 @@ ul {
   }
   .box-2 {
     justify-content: center;
+  }
+  .box-2 img {
+    float: none;
+    margin: auto;
   }
 }
 /* -------------------------Testimonials-------------------------- */
