@@ -1,0 +1,465 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+  background-color: black;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+  8. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+/* --------------------Helpers------------------- */
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  padding: 0px;
+}
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.align-items-center {
+  align-items: center;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+/* --------------------Header------------------- */
+.header {
+  background-color: var(--color-1);
+  padding: 1rem 0;
+  position: relative;
+}
+.header .logo,
+.header .nav {
+  padding: 0 1rem;
+}
+
+.header .nav ul li {
+  display: inline-block;
+  margin-left: 40px;
+}
+.header .nav ul li a {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  display: block;
+  font-size: 1rem;
+  padding: 1rem 0;
+  color: rgb(255, 255, 255);
+  text-transform: capitalize;
+  transition: all 0.5s ease;
+}
+.header .nav ul li a:hover,
+.header .nav ul li a.active {
+  color: #6de11a;
+}
+.header #nav-check {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-toggler {
+  height: 34px;
+  width: 44px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+.nav-toggler span {
+  display: block;
+  height: 2px;
+  width: 20px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+}
+.nav-toggler span::before,
+.nav-toggler span::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  left: 0;
+}
+.nav-toggler span::before {
+  top: -6px;
+}
+.nav-toggler span::after {
+  top: 6px;
+}
+@media (max-width: 768px) {
+  .nav-toggler {
+    display: flex;
+  }
+  .header .nav {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    padding: 1rem;
+    background-color: black;
+  }
+  .header .nav ul li {
+    display: block;
+    margin: 0;
+  }
+  .header #nav-check:checked ~ .nav {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .header #nav-check:checked ~ .nav-toggler span {
+    background-color: transparent;
+  }
+  .header #nav-check:checked ~ .nav-toggler span::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+  .header #nav-check:checked ~ .nav-toggler span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+}
+/* -------------------------Hero-------------------------- */
+
+.responsive-two-column-grid {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .responsive-two-column-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+  }
+}
+
+.hero {
+  padding: 8rem 0rem;
+}
+.box-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  color: white;
+}
+
+.box-1 p {
+  padding-left: 5px;
+  color: rgb(99, 99, 99);
+}
+.box-1 h1 {
+  font-size: 4rem;
+  line-height: 1.2;
+  padding-bottom: 2rem;
+  background: -webkit-linear-gradient(0deg, #ffffff, #686868);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.box-2 {
+  display: flex;
+  justify-content: flex-end;
+}
+.box-2 img {
+  width: 80%;
+}
+.btn {
+  background-color: #6de11a;
+  color: black;
+  padding: 0.75rem 2rem;
+  border-radius: 3px;
+  border: none;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 0rem;
+  }
+  .box-1 {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 0.75rem 4rem 0.75rem;
+  }
+  .box-1 h1 {
+    font-size: 3rem;
+  }
+  .box-2 {
+    justify-content: center;
+  }
+}
+/* -------------------------Testimonials-------------------------- */
+.testimonials {
+  padding: 6rem 1rem;
+  background-color: #fbfbfb;
+  text-align: center;
+  /* background: radial-gradient(#85ffbd, #fffb7d); */
+}
+/* container */
+.responsive-three-column-grid {
+  display: block;
+  gap: 1rem;
+}
+
+/* tablet breakpoint */
+@media (min-width: 768px) {
+  .responsive-three-column-grid {
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.card {
+  background-color: white;
+  padding: 1.75rem;
+  border-radius: 5px;
+  border: 2px solid rgb(245, 245, 245);
+  -webkit-box-shadow: 0px 0px 275px 4px rgba(46, 255, 130, 0.243);
+  -moz-box-shadow: 0px 0px 275px 4px rgba(46, 255, 130, 0.34);
+  box-shadow: 0px 0px 275px 4px rgba(46, 255, 130, 0.255);
+}
+.card p {
+  /* color: var(text-color); */
+  color: rgb(76, 74, 74);
+  text-align: left;
+}
+.card-head img {
+  width: 60px;
+  border-radius: 999px;
+}
+
+.card-head {
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+
+.avatar-box {
+  text-align: left;
+  padding-left: 1rem;
+}
+.avatar-box h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.avatar-box h3 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.sub {
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 4rem;
+}
+.sub span {
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 4rem 1rem;
+  }
+  .card {
+    margin-bottom: 1.25rem;
+  }
+  .sub {
+    font-size: 2rem;
+  }
+}
+/* -----------------features------------------ */
+
+.cta {
+  padding: 6rem 1rem;
+  background-color: rgb(255, 255, 255);
+  display: grid;
+  align-items: center;
+  text-align: center;
+}
+.cta p {
+  display: inline;
+  color: rgb(138, 138, 138);
+  border: 1px solid rgb(138, 138, 138);
+  padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 100rem;
+}
+
+.cta h2 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin: 1rem 0rem 2rem 0rem;
+  background: -webkit-linear-gradient(45deg, #000000, #565656);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@media (max-width: 768px) {
+  .cta {
+    padding: 4rem 1rem;
+  }
+  .cta h2 {
+    font-size: 2rem;
+  }
+}
+
+input:focus {
+  outline: 2px solid white;
+}
+
+input::placeholder {
+  color: rgb(161, 130, 130);
+}
+
+/* Button on top of the Input */
+.form-wrapper {
+  max-width: 500px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.form-wrapper input {
+  background: rgb(255, 255, 255);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  width: 100%;
+}
+
+.form-wrapper button {
+  background: white;
+  border-radius: 50px;
+  aspect-ratio: 1;
+  height: 80%;
+  width: 5rem;
+  position: absolute;
+  top: 10%;
+  right: 5px;
+  border: none;
+  background: #6de11a;
+  cursor: pointer;
+}
+/* ----------footer------------ */
+footer {
+  color: white;
+  padding: 6rem 1rem 2rem 1rem;
+}
+.footer-head {
+  float: left;
+  padding-right: 10rem;
+}
+.footer-head img {
+  margin-bottom: 1rem;
+}
+.menu-item h4 {
+  margin-bottom: 1rem;
+  color: #6de11a;
+}
+.menu-item li {
+  margin-bottom: 0.25rem;
+}
+@media (max-width: 768px) {
+  footer {
+    padding: 4rem 1rem 2rem 1rem;
+  }
+  .footer-head {
+    float: none;
+    padding-right: 0rem;
+    margin-bottom: 2rem;
+  }
+  .menu-item {
+    margin-bottom: 2rem;
+  }
+  .footer-end {
+    flex-direction: column;
+  }
+  .footer-end p {
+    margin-bottom: 2rem;
+  }
+}
+.footer-end {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgb(24, 23, 23);
+  margin-top: 5rem;
+  padding-top: 1rem;
+}
+footer svg {
+  width: 1.55rem;
+  fill: rgb(255, 255, 255);
+}
+footer .social {
+  display: flex;
+  gap: 1rem;
+}
