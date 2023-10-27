@@ -399,7 +399,7 @@ input::placeholder {
 }
 
 .form-wrapper button {
-  background: white;
+  color: black;
   border-radius: 50px;
   aspect-ratio: 1;
   height: 80%;
